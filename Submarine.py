@@ -35,9 +35,6 @@ class Submarine:
         self.x += (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration
         self.y += (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration
 
-        self.x = self.x % window.get_width()
-        self.y = self.y % window.get_height()
-
         window.fill((11, 4, 54))
 
     
