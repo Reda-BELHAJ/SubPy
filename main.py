@@ -13,7 +13,7 @@ rect.center = window.get_rect().center
 
 submarine   = Submarine()
 
-velocity        = 3
+velocity        = 2.4
 acceleration    = 0.9
 
 while True:
