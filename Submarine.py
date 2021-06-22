@@ -1,5 +1,4 @@
 import pygame
-import pygame.gfxdraw as gfx
 
 class Submarine:
     def __init__(self) :
@@ -14,7 +13,7 @@ class Submarine:
         lightR       = pygame.image.load('Assets/lightTT.png').convert_alpha()
 
         xL           = self.x + 24.5 + xPlus/2
-        yL           = self.y +7+ yPlus/2
+        yL           = self.y + 7 + yPlus/2
 
         if self.sign == 1:
             lightR   = pygame.transform.flip(lightR, True, False)
@@ -34,7 +33,7 @@ class Submarine:
         self.x += (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration
         self.y += (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration
 
-        window.fill((20, 20, 50))
+        # window.fill((20, 20, 50))
 
     
     def flip(self, window):
