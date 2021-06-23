@@ -11,6 +11,7 @@ class Submarine:
     def light(self, window):
         xPlus, yPlus = self.spriteR.get_size()
         lightR       = pygame.image.load('Assets/lightTT.png').convert_alpha()
+        # light_350_med
 
         xL           = self.x + 24.5 + xPlus/2
         yL           = self.y + 7 + yPlus/2
@@ -29,9 +30,11 @@ class Submarine:
 
     def move(self, window, velocity, acceleration):
         keys = pygame.key.get_pressed()
-    
-        self.x += (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration
-        self.y += (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration
+        xPlus, yPlus = self.spriteR.get_size()
+
+        if 0 <= (self.x + (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration) <= 800 - xPlus and 0 <= (self.y + (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration) <= 800 - yPlus:
+            self.x += (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration
+            self.y += (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration
 
         # window.fill((20, 20, 50))
 

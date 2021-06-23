@@ -2,6 +2,7 @@ import pygame
 import random
 
 from pygame.display import update
+from pygame.draw import rect
 from Submarine import Submarine
 from Bubble import Bubble
 
@@ -16,14 +17,22 @@ bg      = pygame.image.load('Assets/bg.png')
 
 submarine   = Submarine()
 
-velocity        = 2.4
+velocity        = 3
 acceleration    = 0.9
 
 bubbles = []
 
+fog     = pygame.Surface((800, 800)).convert_alpha()
+
 while True:
     clock.tick(60)
+
     window.blit(bg, (0 ,0))
+
+    fog.fill((70, 70, 70))
+    fog.set_alpha(100)
+
+    window.blit(fog, (0 ,0), special_flags = pygame.BLEND_MULT)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
