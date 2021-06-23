@@ -5,6 +5,7 @@ from pygame.display import update
 from pygame.draw import rect
 from Submarine import Submarine
 from Bubble import Bubble
+from Obst import *
 
 pygame.init()
 pygame.display.set_caption('UNDERWATER')
@@ -15,22 +16,30 @@ clock   = pygame.time.Clock()
 
 bg      = pygame.image.load('Assets/bg.png')
 
-submarine   = Submarine()
+submarine   = Submarine(window)
 
-velocity        = 3
+velocity        = 4
 acceleration    = 0.9
 
 bubbles = []
 
 fog     = pygame.Surface((800, 800)).convert_alpha()
 
+Obstacles = []
+
+obs     = pygame.Rect(30, 30, 60, 60)
+obs2     = pygame.Rect(500, 500, 60, 60)
+
+Obstacles.append(obs)
+Obstacles.append(obs2)
+
 while True:
     clock.tick(60)
 
-    window.blit(bg, (0 ,0))
+    # window.blit(bg, (0 ,0))
 
-    fog.fill((70, 70, 70))
-    fog.set_alpha(100)
+    # fog.fill((70, 70, 70))
+    # fog.set_alpha(100)
 
     window.blit(fog, (0 ,0), special_flags = pygame.BLEND_MULT)
 
@@ -39,7 +48,7 @@ while True:
             pygame.quit()  
             quit()
 
-    submarine.move(window, velocity, acceleration)
+    submarine.move(window, velocity, acceleration, Obstacles)
     submarine.flip(window)
 
     if submarine.sign == 0:
@@ -57,6 +66,10 @@ while True:
     # bubbles.append(bubble)
     
     # window.blit(bubble.image, (bubble.x ,bubble.y))
+
+    pygame.draw.rect(window, (255,0,0), obs2)
+    pygame.draw.rect(window, (255,0,0), obs)
+    pygame.draw.rect(window, (255,0,0), submarine.rect, 1)
 
     submarine.light(window)
     
