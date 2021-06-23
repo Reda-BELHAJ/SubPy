@@ -6,6 +6,7 @@ from pygame.draw import rect
 from Submarine import Submarine
 from Bubble import Bubble
 from Obst import *
+from Light import *
 
 pygame.init()
 pygame.display.set_caption('UNDERWATER')
@@ -17,6 +18,7 @@ clock   = pygame.time.Clock()
 bg      = pygame.image.load('Assets/bg.png')
 
 submarine   = Submarine(window)
+light       = Light(submarine)
 
 velocity        = 4
 acceleration    = 0.9
@@ -66,12 +68,14 @@ while True:
     # bubbles.append(bubble)
     
     # window.blit(bubble.image, (bubble.x ,bubble.y))
+    
+    light.create(window, submarine)
 
     pygame.draw.rect(window, (255,0,0), obs2)
     pygame.draw.rect(window, (255,0,0), obs)
     pygame.draw.rect(window, (255,0,0), submarine.rect, 1)
 
-    submarine.light(window)
-    
+    # submarine.light(window)
+
     pygame.display.update()
     pygame.display.flip()

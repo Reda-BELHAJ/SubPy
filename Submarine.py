@@ -18,24 +18,6 @@ class Submarine:
 
     def create_rect(self, window):
         return pygame.Rect(self.x, self.y,self.width, self.height)
-
-    def light(self, window):
-        lightR       = pygame.image.load('Assets/lightTT.png').convert_alpha()
-        # light_350_med
-
-        xL           = self.x + 24.5 + self.width/2
-        yL           = self.y + 7 + self.height/2
-
-        if self.sign == 1:
-            lightR   = pygame.transform.flip(lightR, True, False)
-            xL -= self.width - 4
-
-        lightR.set_alpha(100)
-
-        lightRect  = lightR.get_rect()
-        lightRect.center = (xL, yL)
-
-        window.blit(lightR, lightRect)
                 
 
     def move(self, window, velocity, acceleration, rects):
