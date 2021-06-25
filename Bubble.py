@@ -14,7 +14,7 @@ class Bubble:
         self.exists   = True
     
     def update(self, y):
-        self.y -= 0.1
+        self.y -= 1
         # self.x += random.randint(-1,1)
 
         if self.y < y - 20 or self.y > y + 20:

@@ -1,7 +1,13 @@
 import pygame
 
-def create(window, submarine):
-    pygame.draw.rect(window, (255,0,0), pygame.Rect(30, 30, 60, 60))
+class Obstacle:
+    def __init__(self, x, y):
+        self.sprite = pygame.image.load('Assets/Obs.png')
+        self.width, self.height = self.sprite.get_size()
+        self.x = x
+        self.y = y
 
-def collision(rect, submarine):
-    pass
+        self.rect = self.create_rect()
+
+    def create_rect(self):
+        return pygame.Rect(self.x, self.y,self.width, self.height)

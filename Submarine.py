@@ -14,9 +14,9 @@ class Submarine:
         self.dx          = 0
         self.dy          = 0
 
-        self.rect        = self.create_rect(window)
+        self.rect        = self.create_rect()
 
-    def create_rect(self, window):
+    def create_rect(self):
         return pygame.Rect(self.x, self.y,self.width, self.height)
                 
 
@@ -26,12 +26,12 @@ class Submarine:
         self.dx = (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration
         self.dy = (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration
 
-        for rect in rects:
-            if rect.colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
+        for obs in rects:
+            if obs.rect.colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
                 self.dx = 0
                 self.dy -= 1
 
-            if rect.colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
+            if obs.rect.colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
                 self.dy = 0
         
         if not (0 <= self.x + self.dx <= 800 - self.width and 0 <= self.y + self.dy <= 800 - self.height):
@@ -41,7 +41,7 @@ class Submarine:
         self.x += self.dx
         self.y += self.dy
 
-        self.rect = self.create_rect(window)
+        self.rect = self.create_rect()
 
         # window.fill((20, 20, 50))
 
