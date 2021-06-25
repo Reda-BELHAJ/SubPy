@@ -1,3 +1,4 @@
+from Walls import Walls
 import pygame
 import random
 
@@ -7,6 +8,7 @@ from Submarine import Submarine
 from Bubble import Bubble
 from Obst import Obstacle
 from Light import *
+import Map
 
 pygame.init()
 pygame.display.set_caption('UNDERWATER')
@@ -27,17 +29,16 @@ fog     = pygame.Surface((800, 800)).convert_alpha()
 
 obstacles = []
 
+
 for x in range(3):
     obs     = Obstacle(300 * x, 50 * x)
     obstacles.append(obs)
-
-last_updates = pygame.time.get_ticks()
-cooldown     = 250
 
 while True:
     clock.tick(60)
 
     window.blit(bg, (0 ,0))
+    obstacles = Map.draw(window)
 
     fog.fill((70, 70, 70))
     fog.set_alpha(100)
@@ -57,16 +58,18 @@ while True:
     else:
         window.blit(submarine.spriteL, (submarine.x,submarine.y))
 
-    
     # if submarine.sign == 0:
     #     x, y = submarine.x + 10, submarine.y  - 5
     # else:
     #     x, y = submarine.x + 30, submarine.y  - 8
 
-    light.create(window, submarine)
+    # for obs in obstacles:
+    #     window.blit(obs.sprite, (obs.x,obs.y))
 
-    for obs in obstacles:
-        window.blit(obs.sprite, (obs.x,obs.y))
+    # for wall in walls:
+    #     window.blit(wall.sprite, (wall.x,wall.y))
+
+    light.create(window, submarine)
 
     pygame.display.update()
     pygame.display.flip()
