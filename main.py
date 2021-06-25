@@ -58,17 +58,6 @@ while True:
     else:
         window.blit(submarine.spriteL, (submarine.x,submarine.y))
 
-    # if submarine.sign == 0:
-    #     x, y = submarine.x + 10, submarine.y  - 5
-    # else:
-    #     x, y = submarine.x + 30, submarine.y  - 8
-
-    # for obs in obstacles:
-    #     window.blit(obs.sprite, (obs.x,obs.y))
-
-    # for wall in walls:
-    #     window.blit(wall.sprite, (wall.x,wall.y))
-
     light.create(window, submarine)
 
     pygame.display.update()
