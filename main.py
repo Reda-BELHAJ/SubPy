@@ -52,7 +52,9 @@ while True:
     # Walls ??????
     # Bubble ?????
     # Animation destroy and fill the entire screen and goes to home screen
-    # Switch Mode to radio scanning and filter out the sprite hide
+    # Zoom Camera 
+    # Switch Mode to 'radio scanning' and filter out the sprite hide
+    # UI and cards to keep track of the health fuel mode charging 
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
