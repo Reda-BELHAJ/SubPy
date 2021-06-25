@@ -1,13 +1,8 @@
-from Walls import Walls
-import pygame
-import random
 
-from pygame.display import update
-from pygame.draw import rect
+import pygame
 from Submarine import Submarine
-from Bubble import Bubble
-from Obst import Obstacle
 from Light import *
+from Maps.maps import map_list
 import Map
 
 pygame.init()
@@ -27,12 +22,14 @@ acceleration    = 0.9
 
 fog     = pygame.Surface((800, 800)).convert_alpha()
 
+map = map_list[0]
+
 while True:
     clock.tick(60)
 
     window.blit(bg, (0 ,0))
 
-    obstacles, spikes = Map.draw(window)
+    obstacles, spikes = Map.draw(map, window)
 
     fog.fill((70, 70, 70))
     fog.set_alpha(100)

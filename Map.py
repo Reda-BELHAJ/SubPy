@@ -2,29 +2,9 @@ import pygame
 from Obst import Obstacle
 from Spike import Spike
 
-map = """
-WWWWWWWWWWWWWWWWW
-W               W
-W               W
-W               W
-W               W
-W         S     W
-W               W
-W               W
-W               W
-W               W
-W      OOOOOOOOOO
-W        S      W
-W        S      W
-W               W
-W     OOOOOOOOOOO
-W               W
-WWWWWWWWWWWWWWWWW
-"""
+def draw(map, window):
+    map = map.splitlines()
 
-map = map.splitlines()
-
-def draw(window):
     spikes = []
     obstacles = []
     for y, line in enumerate(map):
