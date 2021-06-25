@@ -22,8 +22,8 @@ class Light:
         lightRect  = self.spritR.get_rect()
         lightRect.center = (self.x, self.y)
 
-        self.spritR.set_alpha(100)
-        self.spritL.set_alpha(100)
+        self.spritR.set_alpha(120)
+        self.spritL.set_alpha(120)
 
         if submarine.sign == 0:
             window.blit(self.spritR, lightRect)

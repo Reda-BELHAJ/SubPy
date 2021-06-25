@@ -17,7 +17,7 @@ bg      = pygame.image.load('Assets/bg.png')
 submarine   = Submarine(window)
 light       = Light(submarine)
 
-velocity        = 4
+velocity        = 5
 acceleration    = 0.9
 
 fog     = pygame.Surface((800, 800)).convert_alpha()
@@ -32,9 +32,9 @@ while True:
     obstacles, spikes = Map.draw(map, window)
 
     fog.fill((70, 70, 70))
-    fog.set_alpha(100)
 
-    window.blit(fog, (0 ,0), special_flags = pygame.BLEND_MULT)
+    window.blit(fog, (0 ,0), special_flags = pygame.BLEND_RGBA_MULT)
+
     if submarine.exists:
         submarine.move(window, velocity, acceleration, obstacles, spikes)
         submarine.flip(window)
@@ -52,6 +52,7 @@ while True:
     # Walls ??????
     # Bubble ?????
     # Animation destroy and fill the entire screen and goes to home screen
+    # Switch Mode to radio scanning and filter out the sprite hide
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
