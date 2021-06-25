@@ -27,38 +27,35 @@ acceleration    = 0.9
 
 fog     = pygame.Surface((800, 800)).convert_alpha()
 
-obstacles = []
-
-
-for x in range(3):
-    obs     = Obstacle(300 * x, 50 * x)
-    obstacles.append(obs)
-
 while True:
     clock.tick(60)
 
     window.blit(bg, (0 ,0))
-    obstacles = Map.draw(window)
+
+    obstacles, spikes = Map.draw(window)
 
     fog.fill((70, 70, 70))
     fog.set_alpha(100)
 
     window.blit(fog, (0 ,0), special_flags = pygame.BLEND_MULT)
+    if submarine.exists:
+        submarine.move(window, velocity, acceleration, obstacles, spikes)
+        submarine.flip(window)
+
+        if submarine.sign == 0:
+            window.blit(submarine.spriteR, (submarine.x,submarine.y))
+        else:
+            window.blit(submarine.spriteL, (submarine.x,submarine.y))
+
+        light.create(window, submarine)
+
+    pygame.display.update()
+    pygame.display.flip()
+
+    # Walls ??????
+    # Bubble ?????
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()  
             quit()
-
-    submarine.move(window, velocity, acceleration, obstacles)
-    submarine.flip(window)
-
-    if submarine.sign == 0:
-        window.blit(submarine.spriteR, (submarine.x,submarine.y))
-    else:
-        window.blit(submarine.spriteL, (submarine.x,submarine.y))
-
-    light.create(window, submarine)
-
-    pygame.display.update()
-    pygame.display.flip()

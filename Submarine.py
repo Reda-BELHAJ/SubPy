@@ -1,4 +1,5 @@
 import pygame
+from Obst import Obstacle 
 
 class Submarine:
     def __init__(self, window) :
@@ -14,25 +15,33 @@ class Submarine:
         self.dx          = 0
         self.dy          = 0
 
+        self.exists      = True
+
         self.rect        = self.create_rect()
 
     def create_rect(self):
         return pygame.Rect(self.x, self.y,self.width, self.height)
                 
 
-    def move(self, window, velocity, acceleration, rects):
+    def move(self, window, velocity, acceleration, obstacles, spikes):
         keys = pygame.key.get_pressed()
 
         self.dx = (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * velocity * acceleration
         self.dy = (keys[pygame.K_DOWN] - keys[pygame.K_UP]) * velocity * acceleration
 
-        for obs in rects:
+        for obs in obstacles + spikes:
             if obs.rect.colliderect(self.rect.x + self.dx, self.rect.y, self.width, self.height):
-                self.dx = 0
-                self.dy -= 1
+                if isinstance(obs, Obstacle):
+                    self.dx = 0
+                    self.dy -= 1
+                else:
+                    self.exists = False
 
             if obs.rect.colliderect(self.rect.x, self.rect.y + self.dy, self.width, self.height):
-                self.dy = 0
+                if isinstance(obs, Obstacle):
+                    self.dy = 0
+                else:
+                    self.exists = False
         
         if not (0 <= self.x + self.dx <= 800 - self.width and 0 <= self.y + self.dy <= 800 - self.height):
             self.dy = 0
