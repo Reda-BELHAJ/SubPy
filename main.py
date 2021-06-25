@@ -52,7 +52,7 @@ while True:
     # Walls ??????
     # Bubble ?????
     # Animation destroy and fill the entire screen and goes to home screen
-    # Zoom Camera 
+    # Zoom Camera : https://www.youtube.com/watch?v=0fS5LaXiQ-Q&ab_channel=RikCross
     # Switch Mode to 'radio scanning' and filter out the sprite hide
     # UI and cards to keep track of the health fuel mode charging 
 
