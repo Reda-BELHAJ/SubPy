@@ -1,4 +1,3 @@
-import pygame
 from Obst import Obstacle
 from Spike import Spike
 

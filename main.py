@@ -51,7 +51,7 @@ while True:
 
     # Walls ??????
     # Bubble ?????
-    # Animation destroy
+    # Animation destroy and fill the entire screen and goes to home screen
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

@@ -52,8 +52,6 @@ class Submarine:
 
         self.rect = self.create_rect()
 
-        # window.fill((20, 20, 50))
-
     
     def flip(self, window):
         keys = pygame.key.get_pressed()
