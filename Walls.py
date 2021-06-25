@@ -11,3 +11,4 @@ class Walls:
 
     def create_rect(self):
         return pygame.Rect(self.x, self.y,self.width, self.height)
+        

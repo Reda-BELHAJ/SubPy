@@ -54,6 +54,7 @@ while True:
 
     # Walls ??????
     # Bubble ?????
+    # Animation destroy
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
